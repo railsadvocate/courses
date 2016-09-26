@@ -17,14 +17,14 @@ int main(int argc, char **argv) {
   int *array = (int *) malloc (sizeof(int) * argc-1);
   fill_array(array, argv, argc-1);
 
-  mergesort(array, 0, argc-1);
+  mergesort(array, 0, argc-2);
   print_results(array, argc-1);
 }
 
 void mergesort(int *array, int p, int r) {
   int q;
   if (p < r) {
-    q = r / 2;
+    q = (p+r) / 2;
     mergesort(array, p, q);
     mergesort(array, q+1, r);
     merge(array, p, q, r);
@@ -37,28 +37,21 @@ void merge(int *array, int p, int q, int r) {
   int right[r-q+1];
   int i, j;
   for (i = 0; i < q-p+1; i++) {
-    left[i] = array[i];
+    left[i] = array[p+i];
   }
   for (j = 0; j < r-q; j++) {
-    right[j] = array[i++];
+    right[j] = array[q+j+1];
   }
   left[q-p+1] = INT_MAX;
   right[r-q] = INT_MAX;
   i = j = 0;
-  counter = p;
-  while (left[i] != INT_MAX && right[j] != INT_MAX) {
+  for (counter = p; counter < r; counter++) {
     if (left[i] < right[j]) {
-      array[counter++] = left[i++];
+      array[counter] = left[i++];
     }
     else {
-      array[counter++] = right[j++];
+      array[counter] = right[j++];
     }
-  }
-  if (left[i] == INT_MAX) {
-    append_array(array, right, counter, j);
-  }
-  else {
-    append_array(array, left, counter, i);
   }
 }
 
@@ -70,8 +63,8 @@ void append_array(int *master, int *temp, int master_index, int temp_index) {
 
 void fill_array(int *array, char **numbers, int size) {
   int i;
-  for (i = 1; i < size; i++) {
-    array[i-1] = atoi(numbers[i]);
+  for (i = 0; i < size; i++) {
+    array[i] = atoi(numbers[i+1]);
   }
 }
 

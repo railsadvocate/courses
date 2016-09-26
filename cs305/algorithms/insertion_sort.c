@@ -95,8 +95,12 @@ void parse_line_to_array(int *array, int *array_index, char *line, int num_numbe
   for (i = 0; i < num_numbers; i++) {
     dprintf(1, "hi\n");
     number = &line[line_index];
-    while(line[line_index++] != SPACE) {}
-    line[line_index++] = '\0';
-    array[*array_index++] = atoi(number);
+    while(line[line_index] != SPACE) {
+      line_index++;
+    }
+    line[line_index] = '\0';
+    dprintf(1, "number = %d\n", atoi(number));
+    array[(*array_index)++] = atoi(number);
+    line_index++;
   }
 }
