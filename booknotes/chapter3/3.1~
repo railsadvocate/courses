@@ -1,4 +1,0 @@
-Asymptotic notation
-===================
-- For a given function g(n), we denote ø(g(n)) = {f(n) : there exists positive constants c1,c2, and n0 and 0 ≤ c1g(n) ≤ f(n) ≤ c2g(n)
-- option w is sum
