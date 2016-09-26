@@ -1,0 +1,7 @@
+linear_search(A, v) {
+  for i in A {
+    if (A[i] == v) {
+      return i;
+    }
+  }
+}

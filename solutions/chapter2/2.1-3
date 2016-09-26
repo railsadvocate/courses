@@ -1,0 +1,15 @@
+linear_search(A, v) {
+  for i from 0 to A.length {
+    if (A[i] == v) {
+      return i;
+    }
+  }
+}
+
+The loop invariant is this: at the start of every iteration of the for loop, all indices in the array A less than i do not contain v. For this loop invariant to hold, the following three things must be true:
+
+1. Initialization: does the loop invariant hold when the loop in initialized? (just after the assignment of 0 to i but before the comparison of i to the length of A). The answer is yes, when i is 0, there are no idices less than i in the array A; therefore none of the those indices contain v.
+
+2. Maintenance: if the loop invariant holds before an iteration of the loop, does the loop invariant hold for the next iteration as well? Yes, since the check for A[i] == v occurs during each iteration, we are ensuring that every element prior to A[i] has been searched before the start of the next iteration.
+
+3. Termination: When the loop terminateds, does the invariant gives us a useful property that helps show that the algorithm is correct? Yes, when the loop terminates, loop invariant tells us that every element prior to the ending index did not contain v. If the ending index is the end of the array, then the invariant tells us that v was not in A. If the ending index was less than A.length-1, the invariant tells us that the element v was found in A. 

@@ -1,0 +1,168 @@
+Problem: illustrate the operation of insertion sort on array A = {31, 41, 59, 26, 41, 58}
+
+I start by looking at the second number which equals 41.
+NOTE: the asterik in the diagrams represents the number we are currently trying to sort.
+
+
+  0    1    2    3    4    5
++-----------------------------+
+| 31 | 41 | 59 | 26 | 41 | 58 |
++-----------------------------+
+        *
+{ 31 }
++-+--+
+  |      
+  |	
+  +--> sorted subarray from A[0..0]
+  
+I ask the question: "is 31 greater than 41?". Since this is not true, I move on to look at 59.
+
+
+  0    1    2    3    4    5
++-----------------------------+
+| 31 | 41 | 59 | 26 | 41 | 58 |
++-----------------------------+
+            *
+{ 31 , 41 }
++-+-------+
+  |      
+  |	
+  +--> sorted subarray from A[0..1]
+
+I ask the question: "is 41 greater than 59?". Since this is not true, I move on to look at 26.
+
+
+  0    1    2    3    4    5
++-----------------------------+
+| 31 | 41 | 59 | 26 | 41 | 58 |
++-----------------------------+
+		 *
+{ 31 , 41 , 59 }
++-+------------+
+  |      
+  |	
+  +--> sorted subarray from A[0..2]
+
+I ask the question: "is 59 greater than 26?". Since this is true, I save the value of 26, and I replace 26 with 59 at A[3]. The new array looks like this:
+
+  0    1    2    3    4    5
++-----------------------------+
+| 31 | 41 | 59 | 59 | 41 | 58 | saved value = 26
++-----------------------------+
+             +   ^
+	     |   | 
+	     +---+
+	       59
+
+Now I ask the question: "is 41 greater than my saved value of 26?". Since this is true, I replace A[2] with 41. The new array looks like this:
+
+  0    1    2    3    4    5
++-----------------------------+
+| 31 | 41 | 41 | 59 | 41 | 58 | saved value = 26
++-----------------------------+
+	+   ^
+	|   |
+	+---+
+	 41
+
+Now I ask the question, "is 31 greater than my saved value of 26?". Since this is true, I replace A[1] with 31. The new array looks like this:
+
+  0    1    2    3    4    5
++-----------------------------+
+| 31 | 31 | 41 | 59 | 41 | 58 | saved value = 26
++-----------------------------+
+   +   ^
+   |   |
+   +---+
+    31
+
+Since I've reached the first index of my array, I replace A[0] with my saved value of 26. The new array looks like this:
+
+  0    1    2    3    4    5
++-----------------------------+
+| 26 | 31 | 41 | 59 | 41 | 58 | saved value = 26
++-----------------------------+	      	       |
+   ^		      			       |
+   |					       |
+   +-------------------------------------------+
+
+I now look at the next value, which is 41.
+
+  0    1    2    3    4    5
++-----------------------------+
+| 26 | 31 | 41 | 59 | 41 | 58 |
++-----------------------------+
+                       *
+{ 26 , 41 , 41 , 59 }
++-+-----------------+
+  |      
+  |	
+  +--> sorted subarray from A[0..3]
+
+I ask the question: "is 59 greater than 41?". Since this is true, I save the value of 41, and I replace 41 with 59 at A[4]. The new array looks like this:
+
+  0    1    2    3    4    5
++-----------------------------+
+| 26 | 31 | 41 | 59 | 59 | 58 | saved value = 41
++-----------------------------+
+                  +   ^
+	          |   | 
+	          +---+
+	           59
+
+Now I ask the question: "is 41 greater than 59?". Since this is not true, I replace A[3] with my saved value of 41. The new array looks like this:
+
+  0    1    2    3    4    5
++-----------------------------+
+| 26 | 31 | 41 | 41 | 59 | 58 | saved value = 41
++-----------------------------+	      	       |
+		 ^		               |
+                 |			       |
+                 +-----------------------------+
+
+I now look at the next value, which is 58.
+
+  0    1    2    3    4    5
++-----------------------------+
+| 26 | 31 | 41 | 41 | 59 | 58 |
++-----------------------------+
+                           *
+{ 26 , 41 , 41 , 41 , 59 }
++-+----------------------+
+  |      
+  |	
+  +--> sorted subarray from A[0..4]
+
+I ask the question: "is 59 greater than 58?". Since this is true, I save the value of 58 and I replace 58 with 59. The new array looks like this:
+
+  0    1    2    3    4    5
++-----------------------------+
+| 26 | 31 | 41 | 41 | 59 | 59 | saved value = 58
++-----------------------------+
+                       +   ^
+	               |   | 
+	               +---+
+	                59
+
+Now I ask the question: "is 41 greater than 58?". Since this is not true, I replace A[4] with my saved value of 58. The new array looks like this:
+
+  0    1    2    3    4    5
++-----------------------------+
+| 26 | 31 | 41 | 41 | 58 | 59 | saved value = 58
++-----------------------------+	      	       |
+		      ^		               |
+                      |			       |
+                      +------------------------+
+
+I have sorted the entire array and then final array looks like this:
+
+  0    1    2    3    4    5
++-----------------------------+
+| 26 | 31 | 41 | 41 | 58 | 59 | 
++-----------------------------+
+
+{ 26 , 41 , 41 , 41 , 58 , 59 }
++-+---------------------------+
+  |      
+  |	
+  +--> sorted subarray from A[0..5]
