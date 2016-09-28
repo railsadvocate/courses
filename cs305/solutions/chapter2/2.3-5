@@ -1,0 +1,23 @@
+binary search(A, low, high, key)
+1.    mid = (low + high) / 2             
+2.    if key == A[mid]
+3.        return mid
+4.    else if key < A[mid]
+5.        return binary_search(A, low, mid, key)
+6.    else
+7.        return binary_search(A, mid+1, high, key)
+
+
+line  cost  times
+----  ----  -----
+1     c1    1
+2     c2    1
+3     c3    1
+4     c4    1
+5     c5    1
+6     c6    1
+7     c7    1
+
+run time for binary_search procedure = c1*1 + c2*2 + c3*3 + c4*4 + c5*5 + c6*6 + c7*7 = c1 + c2 + c3 + c4 + c5 + c6 + c7 = c = O(1)
+
+Since there are, at worst, lg(n) levels of recursion, and since each level of recursion runs the binary search function, the total runtime of the program would be (levels of recursion * cost per level) = lg(n) * c = lg(n)

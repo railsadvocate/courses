@@ -1,0 +1,7 @@
+problem
+-------
+Explain why the statement, "The running time of algorithm A is at least O(n^2), is meaningless.
+
+answer
+------
+If it's true that the running time of a given algorithm is at least O(n^2), then that statement is meaningless because the runtime of that algorithm would be exactly O(n^2). Big-O notation describes the upper bound on an algorithm. That is, it describes the worst possible running time; so saying that the running time of your algorithm is the worst possible running time of that algorithm is meaningless. 

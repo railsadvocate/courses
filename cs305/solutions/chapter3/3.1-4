@@ -1,0 +1,24 @@
+question
+--------
+1. 2^(n+1) = O(2^n)?
+2. 2^(2n) = O(2^n)?
+
+answer
+------
+1. 2^(n+1) = 2^n * 2^1 = 2(2^n) = O(2^n)
+
+2. Using this definition:
+
+O(g(n)) = {f(n) : there exists two constants c and n0 such that 0 <= f(n) <= c(g(n)) for all n >= n0}.
+
+We can substitute as follows:
+g(n) = 2^n
+f(n) = 2^(2n)
+
+1. 0 <= 2^(2n) <= c*2^n
+2. 2^(2n) <= c*2^n		--> we can get rid of the zero
+3. (2^n)*(2^n) <= c*2^n		--> expand 2^(2n) into (2^n)*(2^n)
+4. 2^n <= c			--> divide by 2^n
+
+5. clearly 2^n <= c is not true therefore 2^(2n) /= O(n^n)
+
