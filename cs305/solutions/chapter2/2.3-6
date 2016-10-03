@@ -1,0 +1,7 @@
+problem
+-------
+observe that the while loop of lines 5-7 of the insertion sort procedure uses linear search to scan through the sorted subarray A[1..j-1]. Can we use binary search instead to improve the overall worst case running time of insertion sort to O(nlg(n))
+
+Answer
+------
+No. While it is true that binary search could be used to locate the index when the key would be inserted in the sorted subarray from A[0..j-1], you would still have to shift over all the elements in the array to make space for the element you want to insert. Therefore, even with the addition of binary search, the insertion sort algorithm would still take O(n^2) time
