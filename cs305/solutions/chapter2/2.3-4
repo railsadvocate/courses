@@ -1,0 +1,17 @@
+problem
+-------
+Write a recurrence for the running time of the recursive implementation of insertion sort.
+
+solution
+--------
+At every level of recursion (including top level), separate the array into two parts:
+   1. The first n-1 elements in the array
+   2. The nth element in the array.
+Then recursively sort the n-1 elements before inserting the nth array element.
+
+This algorithm would have a recurrence as follows:
+
+     T(n) = { O(1)   	      if n = 1
+     	      T(n-1) + O(n)   if n > 1
+
+The O(n) portion comes from the 'combine' portion of the divide and conquer technique. At each recursive level, you still have to sort the elements (combine) which takes O(n) time. This O(n) multiplied by the n levels of recursion will result in a run time upper bounded by O(n^2).

@@ -1,0 +1,28 @@
+problem
+-------
+Use mathematical induction to show that when n is an exact power of 2, the solution of the recurrence:
+
+    T(n) = { 2	 	   if n = 2.
+     	     2T(n/2) + n   if n = 2^k, for k > 1
+
+    is T(n) = nlg(n)
+
+solution
+--------
+First off, for an inductive proof of this kind, you need to prove two things:
+      1. That T(n) = nlg(n) when n = 2 (the base case)
+      2. That T(2^(k+1)) = 2^(k+1) * lg(2^(k+1)) (the inductive case)
+
+Lets start with the base case. When n = 2, T(n) = 2. Substituting into the equation 'T(n) = nlg(n)', we get '2 = 2lg(2)' which is true. Now we need to prove the inductive case. We'll start by writing out the equation for T(n):
+
+     T(n) = 2T(n/2) + n       	      	   	-----> original formula
+     T(2^k) = 2 * T(2^k/2) + 2^k    		-----> rewrite formula in terms of k
+     T(2^(k+1)) = 2 * T(2^(k+1)/2) + 2^(k+1)	-----> let k = k+1 and rewrite formula
+     	       => 2 * T(2^k) + 2^(k+1)		-----> divided 2^(k+1) by 2 to get 2^k
+	       => 2 * 2^k * lg(2^k) + 2^(k+1)	-----> substitute nlg(n) in for T(n) when n = 2^k
+	       => 2^(k+1) * lg(2^K) + 2^(k+1)	-----> multiply 2 by 2^k to get 2^(k+1)
+	       => 2^(k+1) * (lg2^k + 1)		-----> factor out 2^(k+1)
+	       => 2^(k+1) * (lg2^k + lg2)  	-----> rewrite 1 as lg2
+	       => 2^(k+1) * (lg2^(k+1))		-----> use the rule: lg2^a + lg2^b = lg2^(a+b) to write lg(2^k) + lg(2^1) as lg2^(k+1)
+
+You'll notice that the final form I derived is what we were looking for. It follows that when n is an exact power of 2, the solution of the recurrence is T(n) = nlg(n) for all n > 1.

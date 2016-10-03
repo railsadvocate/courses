@@ -4,7 +4,7 @@
 
 void fill_array(int *array, char **numbers, int size);
 void merge_sort(int *array, int p, int r);
-void _merge(int *array, int p, int q, int r);
+void merge(int *array, int p, int q, int r);
 void print_results(int *array, int size);
 
 int main(int argc, char **argv) {
@@ -26,16 +26,16 @@ void merge_sort(int *array, int p, int r) {
     q = (p+r) / 2;
     merge_sort(array, p, q);
     merge_sort(array, q+1, r);
-    _merge(array, p, q, r);
+    merge(array, p, q, r);
   }
 }
 
-void _merge(int *array, int p, int q, int r) {
+void merge(int *array, int p, int q, int r) {
   int counter;
   int left_size = q-p+1;
   int right_size = r-q;
-  int left[left_size + 1];
-  int right[right_size + 1];
+  int left[left_size];
+  int right[right_size];
   int i, j;
   for (i = 0; i < left_size; i++) {
     left[i] = array[p+i];
@@ -43,10 +43,9 @@ void _merge(int *array, int p, int q, int r) {
   for (j = 0; j < right_size; j++) {
     right[j] = array[q+j+1];
   }
-  left[left_size] = INT_MAX;
-  right[right_size] = INT_MAX;
   i = j = 0;
-  for (counter = p; counter < r + 1; counter++) {
+  counter = p;
+  while (i < left_size && j < right_size) {
     if (left[i] < right[j]) {
       array[counter] = left[i];
       i++;
@@ -54,6 +53,19 @@ void _merge(int *array, int p, int q, int r) {
     else {
       array[counter] = right[j];
       j++;
+    }
+    counter++;
+  }
+  if (i == left_size) {
+    for (j = j; j < right_size; j++) {
+      array[counter] = right[j];
+      counter++;
+    }
+  }
+  else {
+    for (i = i; i < left_size; i++) {
+      array[counter] = left[i];
+      counter++;
     }
   }
 }

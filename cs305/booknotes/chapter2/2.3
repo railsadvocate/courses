@@ -1,2 +1,16 @@
-- the insertion sort algorithm uses the incremental approach, having sorted the subarray [0..j-1] and inserting the element at A[j] into the sorted subarray.
+- The divide and conquer paradigm involves three steps at each level of the recursion:
+	1. Divide the problem into a number of subproblems that are smaller instances of the same problem.
+	2. Conquer the subproblems by solving them recursively. If the subproblem sizes are small enough, however, just solve the subproblems in a straigtforward manner
+	3. Combine the solutions to the subproblems into the solution for the original problem.
+- The merge sort algorithm closely follows the divide and conquer paradigm. 
+- The recurrence equation goes as follows:
+	T(n) = {ø(1)			if n <= c
+		aT(n/b) + C(n) + D(n)	otherwise
+	       } 
+	T(n) = running time of a problem of size n
+	a    = number of subproblems at each step
+	1/b  = size of each subproblem
+	D(n) = time needed for divide step of n elements
+	C(n) = time needed for combine step on n elements
+- you can think of the 'aT(n/b)' as the time needed for the conquer step
 - 
