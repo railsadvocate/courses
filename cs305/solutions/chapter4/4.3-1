@@ -1,0 +1,50 @@
+Problem
+-------
+Show that the solution of T(n) = T(n-1) + n is O(n^2)
+
+Solution
+--------
+The definition of big-O is this:
+    O(g(n)) = {f(n) : there exists positive constants c and n0 such that 0 <= f(n) <= cg(n) for all n >= n0}.
+
+The recurrence that we've been given is this:
+    T(n) = { T(n-1) + n
+
+Our guess is that T(n) = O(n^2) and I will prove it via induction.
+
+Induction hypothesis
+--------------------
+Assume that there exists some c > 0 such that T(k) <= ck^2 for 2 <= k < n
+
+Induction step
+--------------
+Need to prove that T(n) <= cn^2
+
+I need to find something to substitute in for T(n-1) in order to prove that T(n) = O(n^2). I need to pick something greater than T(n-1) so that I can write an expression of the form: T(n) <= ...
+
+To get the value to use to substitute in for T(n-1), look back at the guess. Since we need to prove that:
+   f(n) <= O(n^2),
+we will use (n-1)^2 as our substitution value. This yield the following inequality once substituted into the recurrence:
+   T(n) <= c(n-1)^2 + n
+         = c(n^2 - 2n + 1) + n
+	 = cn^2 - c2n + c + n
+	 = cn^2 - (2c-1)n + c
+	<= cn^2 when c >= .5
+
+Finding boundary conditions
+---------------------------
+assume that T(0) = 0
+
+For n = 1, and from the recurrence:
+    T(1) = T(1-1) + 1
+    	 = T(0) + 1
+	 = 1
+
+and from the inequality:
+    T(1) <= c(1)^2
+    	 <= c for c >= 1
+
+   
+
+
+
