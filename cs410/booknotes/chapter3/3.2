@@ -1,3 +1,6 @@
+Content-Type: text/enriched
+Text-Width: 70
+
 Object Lifetime and storage management
 --------------------------------------
 - the period of time between the creation and destruction of a name to object binding is called the binding's lifetime
@@ -5,4 +8,42 @@ Object Lifetime and storage management
   - These lifetimes need not necessarily coincide. 
 - a dangling reference occurs when a name to object binding outlives the object's lifetime. (e.g. an object is deallocated and then used)
 - Object lifetimes generally correspond to one of three principal storage allocation mechanisms used to manage the object's space:
-  1. Static
+  1. Static objects are given an absolute address that is retained throughout the program's execution.
+  2. Stack objects are allocated and deallocated in last-in, first-out order, usually in conjunction with subroutine calls and returns.
+  3. Heap objects may be allocated and deallocated at arbitrary times. They require a more general (and expensive) storage management algorithm.
+- The instructions that constitute a program's machine code can also be thought of as statically allocated objects.
+  - Other example of statically allocated objects include strings, constants, and certain run time variables.
+- In many languages, a named constant is required to have a value that can be determined at compile time via other known constants, known functions, or constants.
+- elaboration constants are constants that can not be determined until run time, but that stay constant after the initial elaboration.
+
+
+- each instance of a subroutine at run time has its own frame (also called an activation record), on the stack, containing arguments and return values, local variables, temporaries, and bookkeeping information.
+
+  - temporaries are typically intermediate values produced in complex calculations.
+
+  - bookkeeping information typically includes a subroutine's return address, a reference to the stack frame of the callee (also called the dynamic link), saved values of registers needed by both the caller and the callee.
+
+  - arguments to be passed to the subsequent routines lie at the top of the frame.
+
+  - maintenance of the stack is the responsibility of the subroutine calling sequence -- the code executed by the caller immediately before and after the call and of the prologue and epilogue.
+
+  - the prologue is the code executed at the beginning of the subroutine call
+
+  - the epilogue is the code executed at the end of the subroutine call
+
+  - the frame pointer register is the register that the compiler picks to determine relative offsets of local variables in subroutines.
+
+
+- A heap is a region of storage in which subblocks can be allocated and deallocated at arbitrary times.
+
+- internal fragmentation is when a storage-management algorithm allocates a block that is larger than required to hold a given object; the extra space is then unused
+
+- external fragmentation occurs when the blocks that have been assigned to active objects are scattered through the heap in such a way that the remaining, unused space is composed of multiple blocks: there may be quite a lot of free space, but no one piece of it may be large enough to satisfy some future request.
+
+- A first fit algorithm for block allocation in a heap will return the first block that matches the request
+
+  - often produces internal fragmentation
+
+- A best fit algorithm for block allocation in a heap will search the whole linked list and return the smallest block that fits the request.
+
+
