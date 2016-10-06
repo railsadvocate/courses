@@ -1,0 +1,27 @@
+1. What is the difference between syntax and semantics?
+	- Syntax is the form in which something is written / the rules that guide how a particular sentence is allowed to be constructed
+	- Semantics are the meaning of a particular sentence.
+
+2. What are the three basic operations that can be used to build complex regular expressions from simpler regular expressions?
+	- concatenation, alternation, kleene closure
+
+3. What additional operation (beyond the three of regular expressions) is provided in context-free grammars?
+	- recursion
+
+4. What is Backus-Naur form? When and why was it devised?
+	- Backus-Naur form describes how a context free grammar can be expressed. It was devised as a result of the development of Algol-60 in the 1960s.
+
+5. Name a language in which indentation affects program syntax.
+	- Python, Haskell, swift, Go
+
+6. When discussing context-free languages, what is a derivation? What is a sentential form?
+	- a derivation is the process of expanding a production rule to produce a sentential form. A non-terminal (on the left-hand side of a production rule) is expanded to the right hand side of the production rule to produce a derivation. This derivation is called a sentential form (any sentence generated during each step of a derivation).
+
+7. What is the difference between a right-most and a left-most derivation?
+	- a right-most derivation expands the right-most non-terminal at each step in the derivation while a left-most derivation expands the left-most non-terminal at each step.
+
+8. What does it mean for a context-free grammar to be ambiguous?
+	- If a CFG is ambiguous, one valid sentence in the grammar can be derived from two distinct derivations (there is more than one way to derive the sentence).
+
+9. What are associativity and precedence? Why are they significant in parse trees?
+	- associativity and precedence are very important with arithmetic expressions in CFGs because they descibe how humans typically think of arithmetic. For example, humans think of the expression '10 - 4 - 2' in terms of left associativity (whether they know it or not). This means that they really think of this expression as '(10 - 4) - 2' instead of '10 - (4 - 2)'. In that sense, we want our CFGs to to addition and subtraction in a left-associative manner. Precedence refers to what we know as order of operation. For example, the expression '2 + 3 * 2' would evaluate to 8 since multiplication has a higher order of precedence that addition. CFGs need to be able to express this precedence. The way we describe the associativity and precedence rules will have a direct impact on the parser as it builds the parse tree. 
