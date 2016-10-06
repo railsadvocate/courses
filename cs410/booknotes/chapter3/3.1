@@ -1,0 +1,16 @@
+The notion of binding time
+--------------------------
+- a binding is an association between two things, such as a name and the thing it names.
+- binding time is the time at which a binding is created, or more generally, the time at which any implementation decision is made. There are many different times at which decisions may be bound:
+  - language design time --> in most languages, the control flow constructs, primitives, many language semantics, etc. 
+  - language implementation time (compiler writing) --> number of bits of fundamental types / coupling of IO to OS's concept of files
+  - program writing time --> programmers choose algorithms, data structures, and names.
+  - compile time --> compilers choose the mapping of high-level constructs to machine code
+  - link time --> the binding between two modules in a separate compilation situation is not finalized until link time. 
+  - load time --> the point at which the OS loads the program into memory 
+  - run time --> binding values to variables
+
+- the terms static and dynamic are typically used to refer to things bound before run time and things bound at run time
+- compiler based language implementations tend to be more efficient than interpreter-based implementations because they make earlier decisions. 
+- in general, early binding times are associated with greater efficiency while later binding times are associated with greater flexibility.
+- most scripting languages delay all type checking until run time. 

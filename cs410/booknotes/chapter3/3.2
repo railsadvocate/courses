@@ -1,0 +1,8 @@
+Object Lifetime and storage management
+--------------------------------------
+- the period of time between the creation and destruction of a name to object binding is called the binding's lifetime
+- the time between the creation and destruction of an object is called the object's lifetime.
+  - These lifetimes need not necessarily coincide. 
+- a dangling reference occurs when a name to object binding outlives the object's lifetime. (e.g. an object is deallocated and then used)
+- Object lifetimes generally correspond to one of three principal storage allocation mechanisms used to manage the object's space:
+  1. Static
