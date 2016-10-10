@@ -1,0 +1,26 @@
+Problem
+-------
+Use a recursion tree to determine a good asymptotic upper bound on the recurrence T(n) = 3(T(floor(n/2))) + n
+
+Soluction
+---------
+
+                        cn                       -------------> cn
+			|
+			|
+	       +--------+---------+
+	       |        |         |
+	       |        |         |
+	    c(n/2)   c(n/2)    c(n/2)            -------------> cn
+	       |
+	       |
+	       .
+	       .
+	       .
+	       .
+	    c(n/2^x)                             -------------> cn
+
+n/2^x = 1
+n = 2^x
+lgn = lg2^x
+x = lgn

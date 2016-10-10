@@ -1,0 +1,25 @@
+problem
+-------
+We saw that the solution of T(n) = 2T(floor(n/2)) + n is O(nlgn). Show that the solution of this recurrence is also big omega of nlgn. Conclude that the solution is Theta of nlgn.
+
+Solution
+--------
+The definition of big omega is: big-omega(g(n)) = {f(n) : there exists positive constants c and n0 such that 0 <= cg(n) <= f(n) for some c and all n >= n0}.
+f(n) = T(n)
+g(n) = nlgn
+
+so we need to prove that 0 <= cnlgn <= T(n) for some c and for all n >= n0
+
+Our guess is that big-omega(T(n)) = nlgn. Therefore our assumption is that c(n/2) * lg(n/2) <= T(n/2)      -----> the floor function was ommitted on purpose because it doesn't really matter
+
+I will substitute this guess into the definition of the recurrence like so:
+2c(n/2) * lg(n/2) + n <= T(n)
+= cn * lg(n/2) + n     
+= cn * (lgn - lg2) + n 
+= cn * (lgn - 1) + n   
+= cnlgn - cn + n
+<= T(n)
+
+cnlgn <= 2(floor(n/2) * lg(floor(n/2))) + n/2
+      <= 2((n/2 + 1) * lg(n/2 + 1)) + n/2
+      <= (n + 2) * (2lg(n/2) * lg2)
