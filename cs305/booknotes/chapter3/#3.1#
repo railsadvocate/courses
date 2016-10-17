@@ -1,0 +1,29 @@
+Asymptotic notation
+===================
+
+ø-notation
+----------
+- the ø-notation asymptotically bounds a function from above and below. (asmptotically tight bounds)
+- For a given function g(n), we denote ø(g(n)) = {f(n) : there exists positive constants c1,c2, and n0 and 0 ≤ c1g(n) ≤ f(n) ≤ c2g(n) for all n ≥ n0}.
+- Essentially what this means is that the set ø(g(n)) is not empty if it can be show that there exists some function f(n) where, given some constants, f(n) is sandwiched between c1g(n) and c2g(n). 
+- This relationship between f(n) and ø(g(n)) can be written two ways: f(n) E (is a member of) ø(g(n)), or f(n) = ø(g(n))
+- If this relationship can be established, we say that g(n) forms an asymptotically tight bound for f(n)
+- The steps for showing that .5n^2 - 3n = ø(n^2) are as follows:
+	1. .5n^2 - 3n	= ø(n^2)		(write out the problem)
+	2. 0 ≤ c1n^2 ≤ .5n^2 - 3n ≤ c2n^2	(rewrite problem with substitutions)
+	3. c1 ≤ 1/2 - 3/n ≤ c2		(divide by n^2)
+	4. 1/14 ≤ 1/2 - 3/7 ≤ 1/2		(find constants c1, c2, and n0 such that the inequality works out)
+	5. .5n^2 - 3n = ø(g(n))			(this indeed is true)
+
+
+O-notation
+----------
+- O-notation asymptotically bounds a function from above. 
+- we define O(g(n)) as the set of functions {f(n) : there exists some constants c and n0 such that 0 ≤ f(n) ≤ cg(n) for all n ≥ n0}.
+- The set ø(g(n)) is a subset of O(g(n)). 
+- f(n) = ø(g(n)) implies f(n) =  O(g(n)) but f(n) = O(g(n)) does not imply f(n) = ø(g(n))
+
+Ω-notation
+----------
+- Ω-notation (omega) provides an asymptotically lower bound on a function g(n).
+- Ω(g(n)) = {f(n) : there exists positive constants c and n0 such that 0 ≤ cg(n) ≤ f(n) for all n ≥ n0}.

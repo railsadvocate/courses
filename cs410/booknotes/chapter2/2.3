@@ -1,0 +1,21 @@
+- The parser is the heart of a typical compiler
+	- It calls the scanner to obtain the tokens of the input program, assembles the tokens together into a syntax tree, and passes the tree to the later phases of the compiler.
+	- In effect, the parser is "in charge" of the entire compilation process
+- A parser is a language recognizer.
+- It can be shown that for any CFG, we can create a parser that runs in O(n^3) time, where n is the length of the input program.
+- There are large classes of grammars for which we can build parsers that run in linear time. The two most important of these classes are called LL and LR.
+	- the first letter represents the direction of scanning (left to right in both LL and LR)
+	- the second letter represents the type of derivation (left-most for LL parsing and right-most for LR parsing)
+- The class of LR grammars is larger than the class of LL languages
+- LR parsers are more common than LL parsers, and they are more popular since they tend to be more intuitive, especially in the handling of arithmetic expressions.
+- LL parsers are called top-down, or predictive parsers.
+	- they construct a parse tree from the root down, predicting at each step which production will be used to expand the current node.
+- LR parsers are called bottom-up parsers, or shift-reduce parsers
+	- they construct a parse tree from the leaves up, recognizing when a collection of leaves or other nodes can be joined together as the children of a single parent.
+- most LL languages can be parsed by an LR parser
+- there are several important subclasses of LR parsers, including:
+	1. SLR		--> ease of implementation
+	2. LALR		--> ease of implementation
+	3. "full" LR	--> generality
+- Recursive decent parsers and tables are the two ways to parse LL grammars
+	- recursive decent parsers are typically written by hand and are often used when the language is relatively simple or when a parser generator tool is not available. 
